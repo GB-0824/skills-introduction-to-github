@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Final Project:WS101</title>
+  <style>
+    /* RESET & BASE */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow-x: hidden; font-family: 'Poppins', sans-serif; background: #0b0c10; color: #c5c6c7; }
+    a { text-decoration: none; color: inherit; }
+
+    /* GRADIENT TEXT */
+    .gradient-text { background: linear-gradient(90deg, #51087E, #461257, #808080, #c5c6c7); -webkit-background-clip: text; background-clip: text; color: transparent; background-size: 200% 200%; animation: gradientAnim 5s ease infinite; }
+    @keyframes gradientAnim { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    /* CIRCLE */
+    .circle-image {
+      margin: auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #333;
+    }
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* NAVBAR */
+    nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  width: 100%;
+  padding: 15px 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: right;
+  gap: 50px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #51087E;
+}
+
+    /* HERO SECTION */
+    #hero { display: flex; align-items: center; justify-content: center; height: 100vh; text-align: center; position: relative; overflow: hidden; }
+    .blob { position: absolute; top: -20%; left: -10%; width: 120%; height: 120%; background: radial-gradient(circle at 30% 30%, #461257, #0b0c10); opacity: .3; animation: blobMove 15s infinite ease-in-out; }
+    @keyframes blobMove { 0%,100% { transform: translate(0,0) scale(1); } 33% { transform: translate(10%,15%) scale(1.1); } 66% { transform: translate(-10%,10%) scale(0.9); } }
+    .hero-content { position: relative; z-index: 1; opacity: 0; transform: translateY(30px); transition: all .8s ease-out; }
+    .hero-content.visible { opacity:1; transform: translateY(0); }
+    .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; }
+    .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; color: #461257; }
+    .hero-content .btn { padding: 1rem 2rem; border: 2px solid #51087E; color: #51087E; font-weight: 600; transition: background .3s, color .3s; }
+    .hero-content .btn:hover { background: #51087E; color: #0b0c10; }
+
+    /* SECTIONS */
+    section { padding: 6rem 2rem; }
+    .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; color: #51087E; opacity: 0; transform: translateY(30px); transition: all .8s ease-out; }
+    .section-title.visible { opacity:1; transform: translateY(0); }
+
+    /* PROJECTS GRID */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 2rem; }
+    .card { background: #1f2833; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.5); opacity:0; transform: translateY(30px); transition: all .8s ease-out; }
+    .card.visible { opacity:1; transform: translateY(0); }
+    .card:hover { transform: translateY(-10px) rotate(1deg); }
+    .card img { width:100%; height:200px; object-fit:cover; transition: transform .5s; }
+    .card:hover img { transform: scale(1.1); }
+    .card-content { padding: 1.5rem; }
+    .card-content h3 { margin-bottom: .5rem; color: #663399; }
+    .card-content p { font-size: .9rem; }
+
+    /* CONTACT FORM */
+    .contact-form { max-width:400px; margin:0 auto; display:flex; flex-direction:column; gap:1rem; opacity:0; transform:translateY(30px); transition: all .8s ease-out; }
+    .contact-form.visible { opacity:1; transform:translateY(0); }
+    .contact-form input, .contact-form textarea { padding:1rem; border:2px solid #461257; border-radius:5px; background:transparent; color:#c5c6c7; transition:border .3s; }
+    .contact-form input:focus, .contact-form textarea:focus { outline:none; border-color:#51087E; }
+    .contact-form button { padding:1rem; border:none; border-radius:5px; background:#51087E; color:#0b0c10; font-weight:600; cursor:pointer; transition: background .3s; }
+    .contact-form button:hover { background:#461257; }
+
+    /* FOOTER */
+    footer { text-align:center; padding:2rem; background:#0b0c10; color:#461257; opacity:0; transform:translateY(30px); transition: all .8s ease-out; }
+    footer.visible { opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="hero">
+    <div class="blob"></div>
+    <div class="hero-content reveal">
+     <div class="circle-image">
+    <img src="https://i.postimg.cc/1tVX5sQc/received-275161605420134.jpg" alt="Photo">
+  </div>
+      <h1 class="gradient-text">Genrev Baluyut</h1>
+      <p>Still Learning More About Things
+      For There Is No Limit About The Things That We Could Learn From This World</p>
+
+
+      <a href="#about" class="btn">See More About Myself</a>
+    </div>
+  </section>
+  
+
+  <section id="about">
+    <h2 class="section-title reveal">About Myself</h2>
+    <p style="text-align:center;">Hi I am Genrev Baluyut, a BSIT student from PSAU</p>
+    <p style="text-align:center;">Who likes to play games and learn things that will be of use to me in the future</p>
+    <p style="text-align:center;">I know Java,Python,HTML,CSS and, JavaScript since there is more that I needed to learn </p>
+    <p style="text-align:center;">Since there is more that I needed to learn with these Programming Languages</p>
+   
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title reveal">Achievements</h2>
+    <div class="projects">
+      <div class="card reveal">
+        <img src="https://i.postimg.cc/G38dBd56/e044f84a-c0c0-411b-bcae-ef773a5a15e5.png" alt="Achievement One">
+        <div class="card-content">
+          <h3>Introduction to HTML</h3>
+          <p>A certificate that be obtained through finishing all HTML modules and quizzes from Sololearn.</p>
+        </div>
+      </div>
+      <div class="card reveal" style="transition-delay:.2s;">
+        <img src="https://i.postimg.cc/1z27bhrN/8d39b967-7dbf-4289-96f8-ec9d84a6d4c8.png" alt="Achievement Two">
+        <div class="card-content">
+          <h3>Introduction to CSS</h3>
+          <p>A certificate that be obtained through finishing all CSS modules and quizzes from Sololearn.</p>
+        </div>
+      </div>
+      <div class="card reveal" style="transition-delay:.4s;">
+        <img src="https://i.postimg.cc/RZ3cy3sX/f4c91148-701a-430a-9111-a7c23a2c60e2.png" alt="Achievement Three">
+        <div class="card-content">
+          <h3>Introdiction to JavaScript</h3>
+          <p>A certificate that be obtained through finishing all JavaScript modules and quizzes from Sololearn.</p>
+        </div>
+      </div>
+      <div class="card reveal" style="transition-delay:.4s;">
+        <img src="https://i.postimg.cc/SK6zbcW7/30b8b634-5299-467a-8dd5-ad4f69071389.png" alt="Achievement Four">
+        <div class="card-content">
+          <h3>Web Development</h3>
+          <p>A certificate that be obtained through finishing all the HTML,CSS and, JavaScript modules and quizzes from Sololearn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="contact">
+    <h2 class="section-title reveal">Contact</h2>
+
+    <form class="contact-form reveal">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer class="reveal">
+    <p>&copy; 2025 Genrev Baluyut. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Custom Cursor
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+
+    // Reveal on intersection
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.hero-content, .section-title, .card, .skill, .contact-form, footer')
+        .forEach(el => observer.observe(el));
+
+      // Animate skill circles
+      document.querySelectorAll('.skill').forEach(el => {
+        const percent = el.getAttribute('data-percent');
+        el.querySelector('.progress').style.strokeDasharray = `${percent} 100`;
+      });
+    });
+  </script>
+</body>
+</html>
